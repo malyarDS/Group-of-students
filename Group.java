@@ -55,7 +55,8 @@ public class Group{
         if (student == null) {
             throw new IllegalArgumentException("Student not created");
         }else {
-            group[group.length -1]=student;
+            group[quantityStudent]=student;
+            quantityStudent++;
         }
         Arrays.sort(group, new SortedByName());
     }
