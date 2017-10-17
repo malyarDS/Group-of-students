@@ -1,7 +1,5 @@
 package com_gmail_kr_malyar;
 
-import java.util.*;
-
 public class Group implements Voencom {
 
     private Student[] group = new Student[10];
@@ -76,7 +74,7 @@ public class Group implements Voencom {
     }
 
 
-    public  sortingGroup() {
+    public  Student[] sortingGroup() {
         for (int i = 0; i < quantityStudent - 1
                 && i + 1 < quantityStudent; i++) {
             String sur1 = group[i].getSurname();
@@ -101,7 +99,7 @@ public class Group implements Voencom {
     }
 
     @Override
-    public void militaryAge() {
+    public Student[] militaryAge() {
         Student[] milAge = new Student[1];
         Student[] temp=new Student[1];
         Student[] temp2 = new Student[1];
@@ -120,7 +118,7 @@ public class Group implements Voencom {
                 System.arraycopy(potentialConscript
                         ,0,temp2,0,quantityPotentialConscript);
                 potentialConscript=temp2;
-            }
+            }return potentialConscript;
         }
         for (int i = 0;i<quantityStudent-1;i++) {
             if (group[i] != null && group[i].getAge() > 17 &&
@@ -134,5 +132,7 @@ public class Group implements Voencom {
         }
         System.out.println("These students age of conscription");
         System.out.println(milAge);
+        return milAge;
     }
 }
+
