@@ -41,13 +41,14 @@ public class Main {
             group.addStudent(studentNine);
             group.addStudent(studentTen);
 
+
             group.sortingGroup();
             group.toString();
 
             group.searchStudent("Chahlick");
             group.searchStudent("Kalashnikov");
 
-            System.out.println(group);
+            //System.out.println(group);
             group.addStudent(studentEleven);
 
             group.excludeStudent(studentFive);

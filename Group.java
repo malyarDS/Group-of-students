@@ -2,6 +2,7 @@ package com_gmail_kr_malyar;
 
 import javax.swing.*;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group implements Voencom {
 
@@ -35,21 +36,11 @@ public class Group implements Voencom {
         System.out.println("Group list");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < quantityStudent; i++) {
-            sb.append(group[i].getSurname() + " " +
-                    "");
+            sb.append(i+1).append(" ").append(group[i].getSurname()).append("\n");
         }
+        System.out.println(sb);
         return sb.toString();
     }
-
-    public boolean equalsStudent(Object st) {
-
-        for (int i = 0; i < group.length; i++)
-            if (group[i] == st) {
-                return false;
-            }
-        return true;
-    }
-
 
     public void addStudent(Student student) throws GroupIsOvercrowdedExeption {
         if (quantityStudent < 10) {
@@ -78,16 +69,18 @@ public class Group implements Voencom {
 
 
     public Student[] sortingGroup() {
-        for (int i = 0; i < quantityStudent - 1
-                && i + 1 < quantityStudent; i++) {
-            String sur1 = group[i].getSurname();
-            String sur2 = group[i++].getSurname();
-            if (sur1.compareTo(sur2) < 0) {
-                Student temp = group[i];
-                group[i] = group[i++];
-                group[i++] = temp;
+        for (int i = 0; i < quantityStudent-1; i++) {
+            for (int j=i+1;j<quantityStudent;j++) {
+                String sur1 = group[i].getSurname();
+                String sur2 = group[j].getSurname();
+                if (sur2.compareTo(sur1) < 0) {
+                    Student temp = group[i];
+                    group[i] = group[j];
+                    group[j] = temp;
+                }
             }
         }
+        System.out.println(group);
         return group;
     }
 
@@ -113,10 +106,9 @@ public class Group implements Voencom {
         int quantityMilitary = 0;
         for (int i = 0; i < quantityStudent - 1; i++) {
             System.out.println("\n" +
-                    "These students must undergo a " +
-                    "medical commission");
+                    "These students must undergo a medical commission");
             if (group[i] != null && group[i].getAge() > 16 &&
-                    group[i].getSex().equals("men")) {
+                    group[i].getSex()=="men") {
                 potentialConscript[quantityMilitary] = group[i];
                 System.out.println(group[i]);
                 quantityPotentialConscript++;
@@ -124,8 +116,10 @@ public class Group implements Voencom {
                         , 0, temp2, 0, quantityPotentialConscript);
                 potentialConscript = temp2;
             }
+            potentialConscript.toString();
             return potentialConscript;
         }
+
         for (int i = 0; i < quantityStudent - 1; i++) {
             if (group[i] != null && group[i].getAge() > 17 &&
                     group[i].getAge() < 27 &&
@@ -139,30 +133,6 @@ public class Group implements Voencom {
         System.out.println("These students age of conscription");
         System.out.println(milAge);
         return milAge;
-    }
-
-    public void interactivAddStudent() throws InteractivAddExeption, GroupIsOvercrowdedExeption {
-        String surname = JOptionPane.showInputDialog("What is student name?");
-
-        String name = JOptionPane.showInputDialog("What is student name?");
-
-        String input = JOptionPane.showInputDialog("How old are you?");
-        int age = Integer.parseInt(input);
-
-        String sex = JOptionPane.showInputDialog("What is student sex : men or woman?");
-
-        String input2 = JOptionPane.showInputDialog("What is student number record book?");
-        int numberRecordBook = Integer.parseInt(input2);
-
-        String input3 = JOptionPane.showInputDialog("What is student cours?");
-        int cours = Integer.parseInt(input3);
-
-        String faculty = JOptionPane.showInputDialog("What is faculty?");
-
-        Student interSyudent = new Student(surname, name, age, sex, numberRecordBook, cours, faculty);
-        this.addStudent(interSyudent);
-        System.out.println(Arrays.toString(group));
-        return;
     }
 }
 
