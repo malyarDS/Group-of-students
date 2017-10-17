@@ -37,12 +37,27 @@ public class Main {
             group.addStudent(studentFive);
             group.addStudent(studentSix);
             group.addStudent(studentSeven);
+            group.addStudent(studentEight);
             group.addStudent(studentNine);
             group.addStudent(studentTen);
 
-            //group.toString();
-             System.out.println(group);
+            group.sortingGroup();
+            group.toString();
+
+            group.searchStudent("Chahlick");
+            group.searchStudent("Kalashnikov");
+
+            System.out.println(group);
             group.addStudent(studentEleven);
+
+            group.excludeStudent(studentFive);
+            group.excludeStudent(studentSeven);
+
+            group.sortingGroup();
+            group.toString();
+
+            group.militaryAge();
+
 
         } catch (GroupIsOvercrowdedExeption groupIsOvercrowdedExeption) {
             groupIsOvercrowdedExeption.printStackTrace();

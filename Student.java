@@ -6,6 +6,7 @@ public class Student extends Human{
     private int cours;
     private String faculty;
 
+
     public Student(String surname, String name, int age, String sex, int numberRecordBook, int cours, String faculty) {
         super(surname, name, age, sex);
         this.numberRecordBook = numberRecordBook;
@@ -54,5 +55,4 @@ public class Student extends Human{
                 '}');
         return sb.toString();
     }
-
 }
