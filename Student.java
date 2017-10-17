@@ -1,5 +1,7 @@
 package com_gmail_kr_malyar;
 
+import javax.swing.*;
+
 public class Student extends Human{
 
     private int numberRecordBook;

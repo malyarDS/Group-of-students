@@ -58,9 +58,13 @@ public class Main {
 
             group.militaryAge();
 
+            group.interactivAddStudent();
+
 
         } catch (GroupIsOvercrowdedExeption groupIsOvercrowdedExeption) {
             groupIsOvercrowdedExeption.printStackTrace();
+        } catch (InteractivAddExeption interactivAddExeption) {
+            interactivAddExeption.printStackTrace();
         }
     }
 }

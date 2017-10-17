@@ -1,5 +1,8 @@
 package com_gmail_kr_malyar;
 
+import javax.swing.*;
+import java.util.Arrays;
+
 public class Group implements Voencom {
 
     private Student[] group = new Student[10];
@@ -133,6 +136,29 @@ public class Group implements Voencom {
         System.out.println("These students age of conscription");
         System.out.println(milAge);
         return milAge;
+    }
+    public void interactivAddStudent() throws InteractivAddExeption, GroupIsOvercrowdedExeption {
+        String surname = JOptionPane.showInputDialog ("What is student name?");
+
+        String name = JOptionPane.showInputDialog ("What is student name?");
+
+        String input = JOptionPane.showInputDialog ("How old are you?") ;
+        int age = Integer.parseInt(input);
+
+        String sex = JOptionPane.showInputDialog ("What is student sex : men or woman?");
+
+        String input2 = JOptionPane.showInputDialog ("What is student number record book?") ;
+        int numberRecordBook = Integer.parseInt(input2);
+
+        String input3 = JOptionPane.showInputDialog ("What is student cours?") ;
+        int cours = Integer.parseInt(input3);
+
+        String faculty = JOptionPane.showInputDialog ("What is faculty?");
+
+        Student interSyudent=new Student(surname,name,age,sex,numberRecordBook,cours,faculty);
+        this.addStudent(interSyudent);
+        System.out.println(Arrays.toString(group));
+       return ;
     }
 }
 
