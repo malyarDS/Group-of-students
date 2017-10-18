@@ -1,7 +1,7 @@
 package com_gmail_kr_malyar;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InteractivAddExeption {
 
         Group group = new Group();
 
@@ -38,8 +38,8 @@ public class Main {
             group.addStudent(studentSix);
             group.addStudent(studentSeven);
             group.addStudent(studentEight);
-            group.addStudent(studentNine);
-            group.addStudent(studentTen);
+//            group.addStudent(studentNine);
+//            group.addStudent(studentTen);
 
 
             group.sortingGroup();
@@ -48,7 +48,6 @@ public class Main {
             group.searchStudent("Chahlick");
             group.searchStudent("Kalashnikov");
 
-            //System.out.println(group);
             group.addStudent(studentEleven);
 
             group.excludeStudent(studentFive);
@@ -58,14 +57,11 @@ public class Main {
             group.toString();
 
             group.militaryAge();
-
-            group.interactivAddStudent();
-
-
+            group.addStudentInter();
         } catch (GroupIsOvercrowdedExeption groupIsOvercrowdedExeption) {
             groupIsOvercrowdedExeption.printStackTrace();
-        } catch (InteractivAddExeption interactivAddExeption) {
-            interactivAddExeption.printStackTrace();
         }
+       // Student []milStudent = new Student[];
+
     }
 }

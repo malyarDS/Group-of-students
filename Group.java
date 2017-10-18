@@ -36,7 +36,8 @@ public class Group implements Voencom {
         System.out.println("Group list");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < quantityStudent; i++) {
-            sb.append(i+1).append(" ").append(group[i].getSurname()).append("\n");
+            sb.append(i+1).append(" ").append(group[i].getSurname())
+                    .append(" ").append(group[i].getName()).append("\n");
         }
         System.out.println(sb);
         return sb.toString();
@@ -56,12 +57,22 @@ public class Group implements Voencom {
         }
     }
 
+public void addStudentInter() throws InteractivAddExeption, GroupIsOvercrowdedExeption {
+        InteractiveInputStudent interStudent=new InteractiveInputStudent();
+    try {
+        addStudent(interStudent.getStudent());
+    } catch (GroupIsOvercrowdedExeption groupIsOvercrowdedExeption) {
+        groupIsOvercrowdedExeption.printStackTrace();
+    } catch (InteractivAddExeption interactivAddExeption) {
+        interactivAddExeption.printStackTrace();
+    }
+}
     public void excludeStudent(Student student) {
         for (int i = 0; i < group.length; i++) {
             if (student.equals(group[i])) {
                 group[i] = null;
                 quantityStudent--;
-                System.out.println("Student is expelled");
+                System.out.println("Student № "+(i++)+"\n"+group[i]+"\n"+"is expelled");
             }
         }
         System.out.println("There is no such student in the group");
@@ -107,7 +118,7 @@ public class Group implements Voencom {
         for (int i = 0; i < quantityStudent - 1; i++) {
             System.out.println("\n" +
                     "These students must undergo a medical commission");
-            if (group[i] != null && group[i].getAge() > 16 &&
+            if (group[i] != null && group[i].getAge() > 15 &&
                     group[i].getSex()=="men") {
                 potentialConscript[quantityMilitary] = group[i];
                 System.out.println(group[i]);
@@ -116,7 +127,7 @@ public class Group implements Voencom {
                         , 0, temp2, 0, quantityPotentialConscript);
                 potentialConscript = temp2;
             }
-            potentialConscript.toString();
+            System.out.println(potentialConscript);
             return potentialConscript;
         }
 
